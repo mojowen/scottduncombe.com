@@ -77,7 +77,6 @@ img { max-width: 100%; display: block; }
   position: sticky;
   top: 0;
   left: 0;
-  bottom: auto;
   width: var(--rail-w);
   padding: 44px 34px;
   border-right: 1px solid var(--hairline);
@@ -87,26 +86,25 @@ img { max-width: 100%; display: block; }
   flex-direction: column;
   gap: 26px;
   height: 100vh;
+  max-height: 100vh;
   z-index: 10;
 }
 
-/* Rail header section - stays at top */
+/* Header section - stays at top */
 .rail-header {
-  position: sticky;
-  top: 0;
-  background: var(--cream);
-  padding-bottom: 16px;
-  z-index: 1;
+  flex-shrink: 0;
 }
 
-/* Rail footer section - stays at bottom of rail */
+/* Main content - can scroll */
+.rail-main {
+  flex: 1;
+  overflow-y: auto;
+  min-height: 0;
+}
+
+/* Footer section - stays at bottom */
 .rail-footer {
-  margin-top: auto;
-  position: sticky;
-  bottom: 0;
-  background: var(--cream);
-  padding-top: 16px;
-  border-top: 1px solid var(--hairline);
+  flex-shrink: 0;
 }
 
 .main {
@@ -507,12 +505,13 @@ img { max-width: 100%; display: block; }
     border-bottom: 1px solid var(--hairline);
     padding: 24px clamp(18px, 4vw, 40px);
   }
-  .rail-header, .rail-footer {
+  .rail-header, .rail-main, .rail-footer {
     position: relative;
     background: transparent;
     padding-bottom: 0;
     padding-top: 0;
     border-top: 0;
+    overflow-y: visible;
   }
   .rail .sig { width: 64px; }
   .rail .name { margin: 4px 0 0; }
@@ -522,6 +521,7 @@ img { max-width: 100%; display: block; }
   .rail .photo:hover { width: 98px; height: 98px; }
   .rail .nav { flex-direction: column; }
   .rail .social { display: flex; flex-wrap: wrap; gap: 8px 16px; }
+  .rail-main { overflow: visible; }
   .main { margin-left: 0; max-width: none; }
 }
 
