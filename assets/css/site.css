@@ -89,8 +89,7 @@ img { max-width: 100%; display: block; }
 .rail-content {
   flex: 1;
   min-height: 0;
-  overflow-y: auto;
-  padding: 0 0 44px;
+  /* No overflow - scrolls with page */
 }
 
 /* Header section - stays at top */
