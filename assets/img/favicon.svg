@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- Option D: Split field, interlocking SD -->
+  <rect width="512" height="512" rx="96" fill="#580035"/>
+  <path d="M 96 96 H 416 V 416 H 96 Z M 96 96 L 416 416" fill="none"/>
+  <path d="M 96 416 L 416 96 V 416 Z" fill="#ffffff" opacity="0.12"/>
+  <text x="180" y="270" text-anchor="middle" dominant-baseline="central"
+        font-family="Georgia, 'Times New Roman', serif" font-weight="bold"
+        font-size="170" fill="#fdfafc">S</text>
+  <text x="330" y="330" text-anchor="middle" dominant-baseline="central"
+        font-family="Georgia, 'Times New Roman', serif" font-weight="bold"
+        font-size="170" fill="#f0c7dd">D</text>
+</svg>
