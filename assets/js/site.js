@@ -58,4 +58,25 @@
   window.addEventListener("scroll", compact, { passive: true });
   window.addEventListener("resize", compact, { passive: true });
   compact();
+
+  // Mobile menu at the bottom of the page — the rail markup stays the
+  // single source of truth; this clones its nav/social/footer into a
+  // page footer. CSS shows the clone only on narrow screens (and hides
+  // the originals there under .foot-menu); desktop shows the rail sidebar.
+  var rail = document.querySelector(".rail");
+  if (rail) {
+    var sources = [".nav", ".social", ".rail-foot"];
+    var clones = sources
+      .map(function (s) { return rail.querySelector(s); })
+      .filter(function (el) { return el; })
+      .map(function (el) { return el.cloneNode(true); });
+    if (clones.length) {
+      var foot = document.createElement("footer");
+      foot.className = "page-foot";
+      foot.setAttribute("aria-label", "Site menu");
+      clones.forEach(function (c) { foot.appendChild(c); });
+      document.body.appendChild(foot);
+      document.body.classList.add("foot-menu");
+    }
+  }
 })();

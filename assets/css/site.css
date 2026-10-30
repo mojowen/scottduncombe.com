@@ -540,8 +540,11 @@ img { max-width: 100%; display: block; }
 }
 
 /* ------------------------------------------------------------
-   Responsive — narrow screens: the rail becomes a compact
-   letterhead bar, not a stacked mini-site above the fold.
+   Responsive — narrow screens: the rail slims down to a letterhead
+   identity bar (monogram + name) and the menu moves to a footer at
+   the bottom of the page. The footer menu is a JS clone of the rail
+   markup (site.js), so there is one data source; body.foot-menu
+   marks that it exists. Without JS the bar keeps the menu inline.
    ------------------------------------------------------------ */
 
 @media (max-width: 1079px) {
@@ -566,22 +569,39 @@ img { max-width: 100%; display: block; }
   .rail .tagline { display: none; }
   .rail .name { margin: 0; font-size: 19px; }
 
-  .nav {
-    order: 5;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 2px 18px;
-    width: 100%;
-    margin-top: 6px;
-  }
+  .nav { order: 5; }
   .nav a { font-size: 15.5px; padding: 2px 0; }
-
-  .social { order: 6; width: auto; gap: 6px 16px; }
   .social a { font-size: 10.5px; }
+  .rail-foot { order: 7; margin: 0; font-size: 10px; }
 
-  .rail-foot { order: 7; width: auto; margin: 0; font-size: 10px; }
+  /* Once the footer menu exists, the bar is identity-only… */
+  body.foot-menu .rail .nav,
+  body.foot-menu .rail .social,
+  body.foot-menu .rail .rail-foot { display: none; }
+  body.foot-menu .rail { gap: 0; }
+
+  /* …and the menu lives at the bottom of the page. */
+  .page-foot {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border-top: 1px solid var(--hairline);
+    background: var(--cream);
+    padding: 22px clamp(18px, 4vw, 40px) 26px;
+  }
+  .page-foot .nav { display: flex; flex-direction: row; flex-wrap: wrap; gap: 2px 18px; }
+  .page-foot .nav a { font-size: 15.5px; padding: 2px 0; }
+  .page-foot .social { display: flex; flex-wrap: wrap; gap: 6px 16px; margin: 4px 0 0; }
+  .page-foot .social a { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--grey-light); }
+  .page-foot .social a:hover { color: var(--plum); }
+  .page-foot .rail-foot { margin: 2px 0 0; font-size: 10px; }
 
   .main { max-width: none; }
+}
+
+/* Desktop: the sidebar rail is the menu; the page footer menu hides. */
+@media (min-width: 1080px) {
+  .page-foot { display: none; }
 }
 
 @media (max-width: 560px) {
