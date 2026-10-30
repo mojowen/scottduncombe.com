@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Scott Riker Duncombe :: Dispatches</title>
-    <link>https://scottduncombe.com/writing.html</link>
+    <link>https://scottduncombe.com/writing/</link>
     <description>Dispatches from a decade of civic tech and a year of agent orchestration — long lines, long odds, free pizza, and the robots watching the robots. Coming soon: subscribe now and the posts will find you.</description>
     <language>en-us</language>
     <atom:link href="https://scottduncombe.com/writing.xml" rel="self" type="application/rss+xml"/>

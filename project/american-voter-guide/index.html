@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Scott Riker Duncombe :: American Voter Guide</title>
+  <meta name="description" content="A Rails engine for building PDF + web voter guides across the Alliance for Youth Action&#x27;s affiliates.">
+  <!-- Open Graph -->
+  <meta property="og:title" content="Scott Riker Duncombe :: American Voter Guide">
+  <meta property="og:description" content="A Rails engine for building PDF + web voter guides across the Alliance for Youth Action&#x27;s affiliates.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://scottduncombe.com/project/american-voter-guide/">
+  <meta property="og:image" content="https://scottduncombe.com/assets/img/uploads/2019/11/Screen-Shot-2019-11-17-at-1.23.14-PM.png">
+  <meta property="og:image:alt" content="American Voter Guide">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Scott Riker Duncombe :: American Voter Guide">
+  <meta name="twitter:description" content="A Rails engine for building PDF + web voter guides across the Alliance for Youth Action&#x27;s affiliates.">
+  <meta name="twitter:image" content="https://scottduncombe.com/assets/img/uploads/2019/11/Screen-Shot-2019-11-17-at-1.23.14-PM.png">
+  <meta name="twitter:image:alt" content="American Voter Guide">
+  <meta name="twitter:creator" content="@sduncombe">
+  <meta name="twitter:site" content="@sduncombe">
+  <link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/css/site.css">
+</head>
+<body>
+
+  <aside class="rail">
+    <div class="rail-header">
+      <a class="sig" href="../../" aria-label="Scott Riker Duncombe — home">
+        <svg viewBox="0 0 512 512" role="img" aria-hidden="true">
+          <rect class="field" width="512" height="512" rx="96" fill="#580035"/>
+          <path class="shade" d="M96 416 L416 96 V416 Z" fill="#ffffff" opacity="0.10"/>
+          <path class="split" d="M96 416 L416 96" stroke="#fdfafc" stroke-width="10" stroke-linecap="round"/>
+          <g class="s-ink"><text x="176" y="260" text-anchor="middle" dominant-baseline="central" font-family="Georgia, 'Times New Roman', serif" font-weight="bold" font-size="168" fill="#fdfafc">S</text></g>
+          <g class="d-ink"><text x="330" y="336" text-anchor="middle" dominant-baseline="central" font-family="Georgia, 'Times New Roman', serif" font-weight="bold" font-size="168" fill="#f0c7dd">D</text></g>
+        </svg>
+      </a>
+      <div class="photo-wrap"><img class="photo" src="../../assets/img/me.jpg" alt="Scott Duncombe"></div>
+      <p class="name"><a href="../../">Scott Riker Duncombe</a></p>
+      <p class="tagline">Creator of fine internet technologies for startups, nonprofits, candidates, organizers, &amp; most other folks.</p>
+    </div>
+
+    <div class="rail-content">
+      <nav class="nav" aria-label="Main">
+        <a href="../../">Selected work</a>
+        <a href="../../work/">All the work</a>
+        <a href="../../about/">About</a>
+        <a href="../../press/">Press</a>
+        <a href="../../writing/">Dispatches</a>
+      </nav>
+
+      <ul class="social">
+        <li><a href="https://github.com/mojowen">GitHub</a></li>
+        <li><a href="https://www.linkedin.com/in/scottduncombe">LinkedIn</a></li>
+        <li><a href="https://bsky.app/profile/sduncombe.bsky.social">Bluesky</a></li>
+      </ul>
+    </div>
+
+    <div class="rail-footer">
+      <p class="rail-foot">Portland, Oregon <span class="dot">working from anywhere</span></p>
+    </div>
+  </aside>
+
+
+  <main class="main">
+    <div class="content">
+      <p class="kicker">Nº 04 <span class="no">· Habitat I — Democracy &amp; elections</span></p>
+      <h1 class="display">American Voter Guide</h1>
+      <p class="lede">A Rails engine for building PDF + web voter guides across the Alliance for Youth Action's affiliates.</p>
+
+      <div class="specimen-head">
+        <span class="sticker stamp">Observed</span>
+        <dl class="specs">
+          <div class="row"><dt>First observed</dt><span class="dots"></span><dd>2016</dd></div>
+          <div class="row"><dt>Design</dt><span class="dots"></span><dd>Ashleigh Axios, Jen Wick</dd></div>
+        </dl>
+        <div class="chips"><span class="chip">Rails</span><span class="chip">React</span><span class="chip">Heroku</span></div>
+      </div>
+
+      <div class="prose" style="margin-top: 34px;">
+        <p><b>Keeping Voters Informed Online & IRL</b></p>
+        <p>Building off the <a href="../../project/municipal-voter-guides/">Municipal Voter Guides</a> - the <a href="http://allianceforyouthaction.org">Alliance for Youth Action</a> wanted to create an engine for producing voter guides that would serve all the needs of affiliate organizations that produce and distribute voter guides to young voters across the country and also create shareable content for the web.</p>
+        <p>Enter the voter guide builder: a ruby on rails application, deployed on Heroku, which allowed organizer to create and generate PDFs and web voter guides. An easy to use Reactjs frontend made it simple to build and customize voter guides that would then be build into their final form by a worker queue and published: PDFs generated using PhantomJS and static sites built and published in S3 and AWS Cloudfront.</p>
+      </div>
+      <section class="section">
+        <p class="kicker">Plates <span class="no">· from the field</span></p>
+        <div class="gallery">
+          <img src="../../assets/img/uploads/2019/11/Screen-Shot-2019-11-17-at-1.01.18-PM.png" alt="American Voter Guide — plate">
+          <img src="../../assets/img/uploads/2019/11/Screen-Shot-2019-11-17-at-1.02.51-PM.png" alt="American Voter Guide — plate">
+          <img src="../../assets/img/uploads/2019/11/Screen-Shot-2019-11-17-at-1.05.07-PM.png" alt="American Voter Guide — plate">
+          <img src="../../assets/img/uploads/2019/11/Screen-Shot-2019-11-17-at-1.05.28-PM.png" alt="American Voter Guide — plate">
+          <img src="../../assets/img/uploads/2019/11/Screen-Shot-2019-11-17-at-1.14.39-PM.png" alt="American Voter Guide — plate">
+          <img src="../../assets/img/uploads/2019/11/Screen-Shot-2019-11-17-at-1.14.53-PM.png" alt="American Voter Guide — plate">
+        </div>
+      </section>
+      <section class="section field-notes">
+        <p class="kicker">Field notes</p>
+        <div class="note">With designs from <a href="https://www.ashleighaxios.com/">Ashleigh Axios</a> and <a href="https://fortwick.com/">Jen Wick</a>, product management from Henry Kraemer, Daniela Lopez, and Steven Valles</div>
+        <div class="note">Learn more about the <a href="http://allianceforyouthaction.org">Alliance for Youth Action</a></div>
+        <div class="note">Download a <a href="https://voterguides.s3-us-west-2.amazonaws.com/319-2017-virginia-statewide-elections/voter-guide.pdf">Voter Guide</a> (PDF)</div>
+        <div class="note">Check out the source on <a href="https://github.com/mojowen/voterguidebot">Github</a></div>
+      </section>
+      <nav class="prevnext">
+        <a href="../../work/">← back to the field guide</a>
+        <a href="../national-voter-registration-day/">next: National Voter Registration Day →</a>
+      </nav>
+
+      <footer class="foot">
+        <p>Proudly powered by <a href="https://polls.pizza">coffee &amp; free pizza</a> · <a href="https://github.com/mojowen/scottduncombe.com">fork this code</a>.</p>
+        <p class="mono">© <span data-year>2026</span> Scott Duncombe Web Design and all that · prototype v0</p>
+      </footer>
+
+    </div>
+  </main>
+
+  <script src="../../assets/js/site.js"></script>
+</body>
+</html>

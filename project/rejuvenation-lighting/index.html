@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Scott Riker Duncombe :: Rejuvenation</title>
+  <meta name="description" content="Staging-to-production sync for a large Rails/Mongo commerce stack — preview changes on production-like data before shipping.">
+  <!-- Open Graph -->
+  <meta property="og:title" content="Scott Riker Duncombe :: Rejuvenation">
+  <meta property="og:description" content="Staging-to-production sync for a large Rails/Mongo commerce stack — preview changes on production-like data before shipping.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://scottduncombe.com/project/rejuvenation-lighting/">
+  <meta property="og:image" content="https://scottduncombe.com/assets/img/uploads/2016/07/11137172_10152786752612547_5559090931287376974_n.jpg">
+  <meta property="og:image:alt" content="Rejuvenation">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Scott Riker Duncombe :: Rejuvenation">
+  <meta name="twitter:description" content="Staging-to-production sync for a large Rails/Mongo commerce stack — preview changes on production-like data before shipping.">
+  <meta name="twitter:image" content="https://scottduncombe.com/assets/img/uploads/2016/07/11137172_10152786752612547_5559090931287376974_n.jpg">
+  <meta name="twitter:image:alt" content="Rejuvenation">
+  <meta name="twitter:creator" content="@sduncombe">
+  <meta name="twitter:site" content="@sduncombe">
+  <link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/css/site.css">
+</head>
+<body>
+
+  <aside class="rail">
+    <div class="rail-header">
+      <a class="sig" href="../../" aria-label="Scott Riker Duncombe — home">
+        <svg viewBox="0 0 512 512" role="img" aria-hidden="true">
+          <rect class="field" width="512" height="512" rx="96" fill="#580035"/>
+          <path class="shade" d="M96 416 L416 96 V416 Z" fill="#ffffff" opacity="0.10"/>
+          <path class="split" d="M96 416 L416 96" stroke="#fdfafc" stroke-width="10" stroke-linecap="round"/>
+          <g class="s-ink"><text x="176" y="260" text-anchor="middle" dominant-baseline="central" font-family="Georgia, 'Times New Roman', serif" font-weight="bold" font-size="168" fill="#fdfafc">S</text></g>
+          <g class="d-ink"><text x="330" y="336" text-anchor="middle" dominant-baseline="central" font-family="Georgia, 'Times New Roman', serif" font-weight="bold" font-size="168" fill="#f0c7dd">D</text></g>
+        </svg>
+      </a>
+      <div class="photo-wrap"><img class="photo" src="../../assets/img/me.jpg" alt="Scott Duncombe"></div>
+      <p class="name"><a href="../../">Scott Riker Duncombe</a></p>
+      <p class="tagline">Creator of fine internet technologies for startups, nonprofits, candidates, organizers, &amp; most other folks.</p>
+    </div>
+
+    <div class="rail-content">
+      <nav class="nav" aria-label="Main">
+        <a href="../../">Selected work</a>
+        <a href="../../work/">All the work</a>
+        <a href="../../about/">About</a>
+        <a href="../../press/">Press</a>
+        <a href="../../writing/">Dispatches</a>
+      </nav>
+
+      <ul class="social">
+        <li><a href="https://github.com/mojowen">GitHub</a></li>
+        <li><a href="https://www.linkedin.com/in/scottduncombe">LinkedIn</a></li>
+        <li><a href="https://bsky.app/profile/sduncombe.bsky.social">Bluesky</a></li>
+      </ul>
+    </div>
+
+    <div class="rail-footer">
+      <p class="rail-foot">Portland, Oregon <span class="dot">working from anywhere</span></p>
+    </div>
+  </aside>
+
+
+  <main class="main">
+    <div class="content">
+      <p class="kicker">Nº 23 <span class="no">· Habitat III — The early internet &amp; client work</span></p>
+      <h1 class="display">Rejuvenation</h1>
+      <p class="lede">Staging-to-production sync for a large Rails/Mongo commerce stack — preview changes on production-like data before shipping.</p>
+
+      <div class="specimen-head">
+        <span class="sticker stamp">Observed</span>
+        <dl class="specs">
+          <div class="row"><dt>First observed</dt><span class="dots"></span><dd>2016</dd></div>
+          <div class="row"><dt>Diet</dt><span class="dots"></span><dd>Sidekiq jobs &amp; REST</dd></div>
+        </dl>
+        <div class="chips"><span class="chip">Rails</span><span class="chip">Mongo</span><span class="chip">Contract</span></div>
+      </div>
+
+      <div class="prose" style="margin-top: 34px;">
+        <p><b>Keeping staging and production data in sync - at <a href="http://rejuvenation.com">Rejuvenation</a> with <a href="http://copio.us/">Copious</a>.</b></p>
+        <p>Rejuvenation was looking to create a separate staging and production environment for their large ruby on rails / mongo db e-commerce site. As a contractor at Copious, I implement a solution which would synchronize records from the staging server to production - via a Sidekiq job and a REST endpoint I designed. This would allow Rejuvenation to preview their content and product updates on production-like environment before publishing to their high-traffic store.</p>
+        <p>I also assisted in adding flat rate shipping messaging and calculations to select products.</p>
+      </div>
+      <section class="section">
+        <p class="kicker">Plates <span class="no">· from the field</span></p>
+        <div class="gallery">
+          <img src="../../assets/img/uploads/2016/07/Screen-Shot-2016-07-20-at-11.24.50-AM.png" alt="Rejuvenation — plate">
+          <img src="../../assets/img/uploads/2016/07/Screen-Shot-2016-07-20-at-11.25.38-AM.png" alt="Rejuvenation — plate">
+          <img src="../../assets/img/uploads/2016/07/Screen-Shot-2016-07-20-at-10.55.23-AM.png" alt="Rejuvenation — plate">
+          <img src="../../assets/img/uploads/2016/07/Screen-Shot-2016-07-20-at-10.56.35-AM.png" alt="Rejuvenation — plate">
+          <img src="../../assets/img/uploads/2016/07/Screen-Shot-2016-07-20-at-10.56.27-AM.png" alt="Rejuvenation — plate">
+        </div>
+      </section>
+      <nav class="prevnext">
+        <a href="../../work/">← back to the field guide</a>
+        
+      </nav>
+
+      <footer class="foot">
+        <p>Proudly powered by <a href="https://polls.pizza">coffee &amp; free pizza</a> · <a href="https://github.com/mojowen/scottduncombe.com">fork this code</a>.</p>
+        <p class="mono">© <span data-year>2026</span> Scott Duncombe Web Design and all that · prototype v0</p>
+      </footer>
+
+    </div>
+  </main>
+
+  <script src="../../assets/js/site.js"></script>
+</body>
+</html>

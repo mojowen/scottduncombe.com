@@ -218,7 +218,7 @@ def project_content(content):
 
 RAIL = """  <aside class="rail">
     <div class="rail-header">
-      <a class="sig" href="{root}index.html" aria-label="Scott Riker Duncombe — home">
+      <a class="sig" href="{root}" aria-label="Scott Riker Duncombe — home">
         <svg viewBox="0 0 512 512" role="img" aria-hidden="true">
           <rect class="field" width="512" height="512" rx="96" fill="#580035"/>
           <path class="shade" d="M96 416 L416 96 V416 Z" fill="#ffffff" opacity="0.10"/>
@@ -228,17 +228,17 @@ RAIL = """  <aside class="rail">
         </svg>
       </a>
       <div class="photo-wrap"><img class="photo" src="{root}assets/img/me.jpg" alt="Scott Duncombe"></div>
-      <p class="name"><a href="{root}index.html">Scott Riker Duncombe</a></p>
+      <p class="name"><a href="{root}">Scott Riker Duncombe</a></p>
       <p class="tagline">Creator of fine internet technologies for startups, nonprofits, candidates, organizers, &amp; most other folks.</p>
     </div>
 
     <div class="rail-content">
       <nav class="nav" aria-label="Main">
-        <a href="{root}index.html">Selected work</a>
-        <a href="{root}work.html">All the work</a>
-        <a href="{root}about.html">About</a>
-        <a href="{root}press.html">Press</a>
-        <a href="{root}writing.html">Dispatches</a>
+        <a href="{root}">Selected work</a>
+        <a href="{root}work/">All the work</a>
+        <a href="{root}about/">About</a>
+        <a href="{root}press/">Press</a>
+        <a href="{root}writing/">Dispatches</a>
       </nav>
 
       <ul class="social">
@@ -265,7 +265,7 @@ HEAD = """<!doctype html>
   <meta property="og:title" content="Scott Riker Duncombe :: {title}">
   <meta property="og:description" content="{desc}">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://scottduncombe.com/project/{slug}.html">
+  <meta property="og:url" content="https://scottduncombe.com/project/{slug}/">
   <meta property="og:image" content="{ogimg}">
   <meta property="og:image:alt" content="{title}">
   <!-- Twitter Card -->
@@ -305,7 +305,7 @@ FOOT = """      <footer class="foot">
 
 
 def render_project(card, wp, images, next_card, repo):
-    root = "../"
+    root = "../../"
     title = card["title"]
     lede, prose, notes, gallery_ids = project_content(wp["content"])
     lede = lede or card["lede"]
@@ -419,7 +419,7 @@ def main():
             if os.path.exists(src):
                 images[pid] = rel
 
-    work_path = os.path.join(args.repo, "work.html")
+    work_path = os.path.join(args.repo, "work/index.html")
     work_html = open(work_path).read()
     cards = parse_cards(work_html)
     by_norm = {norm_title(c["title"]): c for c in cards}
@@ -440,9 +440,10 @@ def main():
             nxt_wp = next(w2 for c2, w2 in gen if c2["num"] == later[0]["num"])
             next_card = {"slug": nxt_wp["slug"], "title": later[0]["title"]}
         page = render_project(card, wp, images, next_card, args.repo)
-        out_path = os.path.join(args.repo, "project", wp["slug"] + ".html")
-        open(out_path, "w").write(page)
-        print(f"  project/{wp['slug']}.html  (Nº {card['num']:02d}, {len(wp['gallery_ids'])} plates)")
+        out_dir = os.path.join(args.repo, "project", wp["slug"])
+        os.makedirs(out_dir, exist_ok=True)
+        open(os.path.join(out_dir, "index.html"), "w").write(page)
+        print(f"  project/{wp['slug']}/  (Nº {card['num']:02d}, {len(wp['gallery_ids'])} plates)")
 
     # copy needed images into repo
     copied = 0
@@ -480,7 +481,7 @@ def main():
         if not num or int(num.group(1)) not in slug_by_num:
             continue
         slug = slug_by_num[int(num.group(1))]
-        linked = f'<a class="spec-card" href="project/{slug}.html">' + block[len('<div class="spec-card">'):-len("</div>")] + "</a>"
+        linked = f'<a class="spec-card" href="../project/{slug}/">' + block[len('<div class="spec-card">'):-len("</div>")] + "</a>"
         s = s[:m.start()] + linked + s[close + len("</div>"):]
     open(work_path, "w").write(s)
     print("work.html cards linked")
@@ -488,28 +489,27 @@ def main():
     # repair broken rails (\\1 / \\2 placeholders) in root pages + project pages
     fixed = []
     for path in [
-        "about.html", "press.html", "work.html", "writing.html",
-        "project/moodmonitor.html", "project/pizza-to-the-polls.html",
-        "project/power-the-polls.html",
+        "about/index.html", "press/index.html", "work/index.html", "writing/index.html",
+        "project/moodmonitor/index.html", "project/pizza-to-the-polls/index.html",
+        "project/power-the-polls/index.html",
     ]:
         p = os.path.join(args.repo, path)
         if not os.path.exists(p):
             continue
         s = open(p).read()
-        root = "../" if path.startswith("project/") else ""
+        root = "../../" if path.startswith("project/") else "../"
         active = {
-            "about.html": "About", "press.html": "Press", "work.html": "All the work",
-            "writing.html": "Dispatches",
-        }.get(os.path.basename(path))
+            "index.html": {"about": "About", "press": "Press", "work": "All the work", "writing": "Dispatches"},
+        }.get(os.path.basename(os.path.dirname(path)), {})
         nav_repl = RAIL.format(root=root)
         # build nav+social block with active state
         block = f"""<div class="rail-content">
       <nav class="nav" aria-label="Main">
-        <a href="{root}index.html">Selected work</a>
-        <a href="{root}work.html">All the work</a>
-        <a href="{root}about.html">About</a>
-        <a href="{root}press.html">Press</a>
-        <a href="{root}writing.html">Dispatches</a>
+        <a href="{root}">Selected work</a>
+        <a href="{root}work/">All the work</a>
+        <a href="{root}about/">About</a>
+        <a href="{root}press/">Press</a>
+        <a href="{root}writing/">Dispatches</a>
       </nav>
 
       <ul class="social">
