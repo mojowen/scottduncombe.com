@@ -143,7 +143,7 @@ img { max-width: 100%; display: block; }
   line-height: 1.55;
   color: var(--grey);
   margin: 0;
-  max-height: 7em;
+  max-height: 9em;
   overflow: hidden;
   transition: max-height 0.4s var(--ease), opacity 0.3s var(--ease), margin 0.4s var(--ease);
 }
@@ -515,18 +515,24 @@ img { max-width: 100%; display: block; }
     max-width: calc(var(--measure) + 12rem);
   }
 
+  /* Vertical rhythm inside the rail — the flex gap only spaces the
+     wrappers, so the block-flow children need their own margins. */
+  .rail .sig { margin-bottom: 24px; }
+  .rail .photo-wrap { margin-bottom: 14px; }
+  .rail .nav { margin-bottom: 22px; }
+
   /* ---- compressed rail (long pages) ---- */
   body.scrolled .rail {
     padding: 20px 24px;
     gap: 12px;
   }
-  body.scrolled .rail .sig { width: 54px; }
-  body.scrolled .rail .photo-wrap { width: 48px; min-height: 48px; }
+  body.scrolled .rail .sig { width: 54px; margin-bottom: 10px; }
+  body.scrolled .rail .photo-wrap { width: 48px; min-height: 48px; margin-bottom: 8px; }
   body.scrolled .rail .photo { width: 40px; height: 40px; border-width: 2px; }
   body.scrolled .rail .photo:hover { width: 48px; height: 48px; }
   body.scrolled .rail .name { font-size: 14px; margin: 0; }
   body.scrolled .rail .tagline { max-height: 0; opacity: 0; margin: 0; }
-  body.scrolled .rail .nav { gap: 1px; }
+  body.scrolled .rail .nav { gap: 1px; margin-bottom: 10px; }
   body.scrolled .rail .nav a { font-size: 13.5px; padding: 3px 0; }
   body.scrolled .rail .social { gap: 2px 12px; }
   body.scrolled .rail .social a { font-size: 10.5px; }
