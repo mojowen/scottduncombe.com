@@ -430,7 +430,7 @@ img { max-width: 100%; display: block; }
    Project detail pages
    ------------------------------------------------------------ */
 
-.specimen-head {
+.observed-head {
   background: var(--paper);
   border: 1px solid var(--hairline);
   border-radius: 14px;

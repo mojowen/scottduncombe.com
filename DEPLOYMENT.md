@@ -42,22 +42,34 @@ Edit the source files and commit:
 - **Press data**: `_data/press.json`
 - **About copy**: `about.html` — check for `.todo` dashed markers
 
-## Custom domain (optional)
+## Custom domain
 
-To use `scottduncombe.com` instead of `YOUR_USERNAME.github.io`:
+To use `scottduncombe.com` instead of `YOUR_USERNAME.github.io/scottduncombe.com/`:
 
-1. Add a `CNAME` file in the repo root with just: `scottduncombe.com`
-2. Update DNS at your domain registrar:
-   - A record → `185.199.108.153`
-   - A record → `185.199.109.153`
-   - A record → `185.199.110.153`
-   - A record → `185.199.111.153`
-3. In GitHub repo Settings → Pages, set custom domain and enforce HTTPS
+1. Update DNS at your domain registrar:
+   - `A` record `@` → `185.199.108.153` (and `109.`, `110.`, `111.`)
+   - `CNAME` record `www` → `mojowen.github.io`
+2. In GitHub repo Settings → Pages, set the custom domain `scottduncombe.com`
+   and enforce HTTPS. **GitHub commits a `CNAME` file to the repo root.**
+3. **Keep the deploy `rsync --delete` from ever removing it:**
 
-## Redirects from old site
+   ```bash
+   rsync -a --delete --exclude '.git' --exclude '.github' \
+     --exclude 'DEPLOYMENT.md' --exclude 'package.json' \
+     --exclude '.eleventy.js' --exclude 'README.md' \
+     --exclude 'CNAME' \
+     ~/Projects/scottduncombe-prototype/ ~/Projects/scottduncombe-github-site/
+   ```
 
-When you're ready to switch DNS from the shared host:
+## No redirects needed from the old WordPress site
 
+The old WP permalinks are preserved 1:1 by the directory layout —
+`/project/<slug>/` serves `project/<slug>/index.html`, and `/about/`,
+`/press/`, `/work/`, `/writing/` all exist as `*/index.html`. Once the A
+records are repointed, spot-check a few old URLs (they should all be 200):
+
+    /  /about/  /press/  /work/  /writing/
+    /project/pizza-to-the-polls/  /project/moodmonitor/  /project/<slug>/…
 1. Update GitHub Pages to serve from `main` → `/ (root)` (default)
 
 2. The old WP URLs need 301 redirects. Create `_redirects` file:
