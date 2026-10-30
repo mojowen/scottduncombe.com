@@ -212,6 +212,8 @@ img { max-width: 100%; display: block; }
   color: var(--plum-ink);
   margin: 0 0 1.2em;
 }
+.lede a { color: var(--plum-ink); text-decoration: underline; text-decoration-color: var(--hairline); text-underline-offset: 3px; }
+.lede a:hover { color: var(--plum); }
 
 .rule { width: 64px; height: 3px; background: var(--plum); border: 0; margin: 34px 0; }
 
@@ -219,6 +221,17 @@ img { max-width: 100%; display: block; }
 .section > .kicker { margin-bottom: 18px; }
 
 .prose p { font-size: 17.5px; }
+.prose .grouper {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--plum);
+  margin: 20px 0 8px;
+}
+.prose ul { margin: 0; padding: 0; list-style: none; }
+.prose ul li { position: relative; padding-left: 22px; margin: 5px 0; font-size: 17.5px; }
+.prose ul li::before { content: "—"; position: absolute; left: 0; color: var(--plum); }
 .prose .aside {
   font-family: var(--serif);
   font-style: italic;

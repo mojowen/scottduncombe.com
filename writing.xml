@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Scott Riker Duncombe :: Dispatches</title>
+    <link>https://scottduncombe.com/writing.html</link>
+    <description>Field notes from a decade of civic tech — long lines, long odds, and free pizza. The feed exists; the posts don't — yet. Subscribe now, read later.</description>
+    <language>en-us</language>
+    <atom:link href="https://scottduncombe.com/writing.xml" rel="self" type="application/rss+xml"/>
+  </channel>
+</rss>
