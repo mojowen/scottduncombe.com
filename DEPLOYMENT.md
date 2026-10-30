@@ -27,20 +27,29 @@ This repo contains the static site for scottduncombe.com ready for GitHub Pages 
 | File/Folder | Purpose |
 |-------------|---------|
 | `index.html` | Home page — featured work, stat posters, press strip |
-| `work.html` | All 23 projects as a field guide (3 eras) |
-| `about.html` | About page — draft copy with `.todo` markers |
-| `press.html` | 16 verified press clippings |
-| `writing.html` | Blog slot (feed-first) |
+| `work/` | All 23 projects as a field guide (3 habitats) |
+| `about/` | About page |
+| `press/` | 16 verified press clippings |
+| `writing/` | Blog slot (feed-first) |
+| `resume/` | Redirect → `assets/docs/scott-duncombe-resume.pdf` |
 | `404.html` | Pizza slice with googly eyes |
-| `project/` | 3 project detail pages (PTP, PtP, MoodMonitor) |
-| `assets/` | CSS, JS, and images |
+| `project/` | 23 project detail pages |
+| `tools/check.py` | Static-site checks (run before every commit) |
+| `assets/` | CSS, JS, images, resume PDF |
 
 ## Content updates
 
-Edit the source files and commit:
-- **Project details**: `content/projects/*.md` (MoodMonitor already updated with merger story)
-- **Press data**: `_data/press.json`
-- **About copy**: `about.html` — check for `.todo` dashed markers
+Edit the HTML directly (no build step — it's all pre-rendered), then:
+
+```bash
+python3 tools/check.py --root .   # links, feeds, style rules
+
+git add -A && git commit -m "..." && git push   # push to main = deploy
+```
+
+- **Project details**: `project/<slug>/index.html` (23 pages)
+- **Press**: `press/index.html`
+- **About copy**: `about/index.html`
 
 ## Custom domain
 
@@ -51,15 +60,10 @@ To use `scottduncombe.com` instead of `YOUR_USERNAME.github.io/scottduncombe.com
    - `CNAME` record `www` → `mojowen.github.io`
 2. In GitHub repo Settings → Pages, set the custom domain `scottduncombe.com`
    and enforce HTTPS. **GitHub commits a `CNAME` file to the repo root.**
-3. **Keep the deploy `rsync --delete` from ever removing it:**
-
-   ```bash
-   rsync -a --delete --exclude '.git' --exclude '.github' \
-     --exclude 'DEPLOYMENT.md' --exclude 'package.json' \
-     --exclude '.eleventy.js' --exclude 'README.md' \
-     --exclude 'CNAME' \
-     ~/Projects/scottduncombe-prototype/ ~/Projects/scottduncombe-github-site/
-   ```
+3. **Working on the site:** this repo is the single source of truth —
+   edit here, run `python3 tools/check.py --root .`, commit, push.
+   (The old two-copy "prototype + rsync" workflow was retired 2026-10-30;
+   the prototype directory is archived in `~/Projects-archive/2026-10-30/`.)
 
 ## No redirects needed from the old WordPress site
 
@@ -68,28 +72,17 @@ The old WP permalinks are preserved 1:1 by the directory layout —
 `/press/`, `/work/`, `/writing/` all exist as `*/index.html`. Once the A
 records are repointed, spot-check a few old URLs (they should all be 200):
 
-    /  /about/  /press/  /work/  /writing/
+    /  /about/  /press/  /work/  /writing/  /resume/
     /project/pizza-to-the-polls/  /project/moodmonitor/  /project/<slug>/…
-1. Update GitHub Pages to serve from `main` → `/ (root)` (default)
 
-2. The old WP URLs need 301 redirects. Create `_redirects` file:
-
-   ```
-   /project/pizza-to-the-polls/   /project/pizza-to-the-polls.html   301!
-   /project/power-the-polls/      /project/power-the-polls.html      301!
-   /project/moodmonitor/          /project/moodmonitor.html          301!
-   /about                         /about.html                        301!
-   /press                         /press.html                        301!
-   ```
-
-3. Or configure redirects at your domain registrar/CDN
+(The stale `_redirects` instructions that used to live here contradicted
+this section — the directory layout covers every old WordPress URL.)
 
 ## Notes
 
-- This is a **static site** — no server-side processing
-- All content is pre-rendered HTML
+- This is a **static site** — no server-side processing, no build step
 - Images are ~17MB total (scraped from the live site)
-- Press data is in `content/projects/press.json` — can be updated via `collect_press.py` from the old theme
+- Run `tools/check.py` before every commit — it guards links, feeds, and style rules
 
 ## Next steps after launch
 
