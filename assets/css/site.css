@@ -83,10 +83,11 @@ img { max-width: 100%; display: block; }
   gap: 26px;
 }
 
-/* Main content - can scroll if the rail is taller than the viewport */
+/* Main content - can scroll if the rail is taller than the viewport.
+   No flex-shrink here: a shrinkable content box would spill the
+   nav/social over the footer below when the rail hits its max-height. */
 .rail-content {
-  flex: 1;
-  min-height: 0;
+  flex: 0 0 auto;
 }
 
 /* Header section */
@@ -569,10 +570,9 @@ img { max-width: 100%; display: block; }
   .rail .tagline { display: none; }
   .rail .name { margin: 0; font-size: 19px; }
 
-  .nav { order: 5; }
   .nav a { font-size: 15.5px; padding: 2px 0; }
   .social a { font-size: 10.5px; }
-  .rail-foot { order: 7; margin: 0; font-size: 10px; }
+  .rail-foot { margin: 0; font-size: 10px; }
 
   /* Once the footer menu exists, the bar is identity-only… */
   body.foot-menu .rail .nav,
@@ -580,15 +580,16 @@ img { max-width: 100%; display: block; }
   body.foot-menu .rail .rail-foot { display: none; }
   body.foot-menu .rail { gap: 0; }
 
-  /* …and the menu lives at the bottom of the page. */
+  /* …and the menu lives just above the true page footer. */
   .page-foot {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    margin-top: 64px;
+    padding-top: 24px;
     border-top: 1px solid var(--hairline);
-    background: var(--cream);
-    padding: 22px clamp(18px, 4vw, 40px) 26px;
   }
+  body.foot-menu .foot { margin-top: 28px; }
   .page-foot .nav { display: flex; flex-direction: row; flex-wrap: wrap; gap: 2px 18px; }
   .page-foot .nav a { font-size: 15.5px; padding: 2px 0; }
   .page-foot .social { display: flex; flex-wrap: wrap; gap: 6px 16px; margin: 4px 0 0; }

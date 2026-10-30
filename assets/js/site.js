@@ -61,8 +61,9 @@
 
   // Mobile menu at the bottom of the page — the rail markup stays the
   // single source of truth; this clones its nav/social/footer into a
-  // page footer. CSS shows the clone only on narrow screens (and hides
-  // the originals there under .foot-menu); desktop shows the rail sidebar.
+  // footer that sits just above the true page footer (Proudly powered…).
+  // CSS shows the clone only on narrow screens (and hides the originals
+  // there under body.foot-menu); desktop shows the rail sidebar.
   var rail = document.querySelector(".rail");
   if (rail) {
     var sources = [".nav", ".social", ".rail-foot"];
@@ -75,7 +76,12 @@
       foot.className = "page-foot";
       foot.setAttribute("aria-label", "Site menu");
       clones.forEach(function (c) { foot.appendChild(c); });
-      document.body.appendChild(foot);
+      var trueFoot = document.querySelector("main .foot");
+      if (trueFoot && trueFoot.parentNode) {
+        trueFoot.parentNode.insertBefore(foot, trueFoot);
+      } else {
+        document.body.appendChild(foot);
+      }
       document.body.classList.add("foot-menu");
     }
   }
