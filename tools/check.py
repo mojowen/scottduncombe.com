@@ -21,6 +21,15 @@ FORBIDDEN_HTML = [
     # draft-copy marks and specimen language were retired 2026-10-30
     ('class="todo"', "draft .todo mark"),
     ("Specimen", "specimen language"),
+    # the field-guide/specimen conceit (habitat, Nº, plates…) was retired 2026-10-30
+    ("habitat", "habitat language"),
+    ("nº", "field-guide numbering"),
+    ("first observed", "specimen language"),
+    ("field guide", "field-guide language"),
+    ("field notes", "field-guide language"),
+    (">plates", "field-guide language"),
+    ("measurements", "specimen language"),
+    ("diet", "specimen language"),
 ]
 ORIGIN = "https://scottduncombe.com"
 
