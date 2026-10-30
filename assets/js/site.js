@@ -45,4 +45,17 @@
       window.addEventListener("touchmove", track, { passive: true });
     }
   }
+
+  // Rail compresses once you scroll past the fold, or right away if the
+  // full rail can't fit the viewport (desktop grid layout only — the
+  // .scrolled styles are scoped to min-width: 1080px).
+  var compact = function () {
+    var rail = document.querySelector(".rail");
+    var tooTall = rail && rail.scrollHeight > document.documentElement.clientHeight;
+    var past = (window.scrollY || 0) > 120;
+    document.body.classList.toggle("scrolled", past || !!tooTall);
+  };
+  window.addEventListener("scroll", compact, { passive: true });
+  window.addEventListener("resize", compact, { passive: true });
+  compact();
 })();

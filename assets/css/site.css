@@ -74,7 +74,6 @@ img { max-width: 100%; display: block; }
    ------------------------------------------------------------ */
 
 .rail {
-  position: relative;
   width: var(--rail-w);
   padding: 44px 34px;
   border-right: 1px solid var(--hairline);
@@ -82,36 +81,29 @@ img { max-width: 100%; display: block; }
   display: flex;
   flex-direction: column;
   gap: 26px;
-  z-index: 10;
 }
 
-/* Main content - scrollable area */
+/* Main content - can scroll if the rail is taller than the viewport */
 .rail-content {
   flex: 1;
   min-height: 0;
-  /* No overflow - scrolls with page */
 }
 
-/* Header section - stays at top */
+/* Header section */
 .rail-header {
-  position: sticky;
-  top: 0;
-  background: var(--cream);
-  padding-bottom: 16px;
-  z-index: 1;
+  flex-shrink: 0;
 }
 
-/* Footer section - stays at bottom */
+/* Footer section - pinned to the bottom of the rail */
 .rail-footer {
+  flex-shrink: 0;
   margin-top: auto;
   padding-top: 16px;
   border-top: 1px solid var(--hairline);
 }
 
 .main {
-  margin-left: var(--rail-w);
   padding: clamp(28px, 6vw, 88px) clamp(24px, 5vw, 72px) 64px;
-  max-width: calc(var(--rail-w) + var(--measure) + 12rem);
 }
 
 .content { max-width: var(--measure); }
@@ -139,6 +131,7 @@ img { max-width: 100%; display: block; }
   font-size: 22px;
   font-weight: 900;
   line-height: 1.2;
+  margin-bottom: 0.35em;
 }
 .rail .name a { color: var(--plum); }
 .rail .name a::after { content: " ::"; color: var(--grey-light); font-weight: 600; }
@@ -150,6 +143,9 @@ img { max-width: 100%; display: block; }
   line-height: 1.55;
   color: var(--grey);
   margin: 0;
+  max-height: 7em;
+  overflow: hidden;
+  transition: max-height 0.4s var(--ease), opacity 0.3s var(--ease), margin 0.4s var(--ease);
 }
 
 .rail .photo {
@@ -162,7 +158,8 @@ img { max-width: 100%; display: block; }
   transition: width 0.45s var(--ease), height 0.45s var(--ease);
 }
 .rail .photo:hover { width: 118px; height: 118px; }
-.rail .photo-wrap { width: 158px; min-height: 158px; }
+.rail .photo-wrap { width: 100px; min-height: 100px; transition: width 0.4s var(--ease), min-height 0.4s var(--ease); }
+.sig { transition: width 0.4s var(--ease); }
 
 .nav { display: flex; flex-direction: column; gap: 4px; }
 .nav a {
@@ -494,36 +491,91 @@ img { max-width: 100%; display: block; }
 .foot .mono { margin-top: 6px; }
 
 /* ------------------------------------------------------------
-   Responsive
+   Desktop — two-column grid; the rail pins in place and
+   compresses once you scroll (body.scrolled, set by site.js)
+   ------------------------------------------------------------ */
+
+@media (min-width: 1080px) {
+  body {
+    display: grid;
+    grid-template-columns: var(--rail-w) minmax(0, 1fr);
+    align-items: start;
+  }
+
+  .rail {
+    position: sticky;
+    top: 0;
+    max-height: 100vh;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    transition: padding 0.4s var(--ease), gap 0.4s var(--ease);
+  }
+
+  .main {
+    max-width: calc(var(--measure) + 12rem);
+  }
+
+  /* ---- compressed rail (long pages) ---- */
+  body.scrolled .rail {
+    padding: 20px 24px;
+    gap: 12px;
+  }
+  body.scrolled .rail .sig { width: 54px; }
+  body.scrolled .rail .photo-wrap { width: 48px; min-height: 48px; }
+  body.scrolled .rail .photo { width: 40px; height: 40px; border-width: 2px; }
+  body.scrolled .rail .photo:hover { width: 48px; height: 48px; }
+  body.scrolled .rail .name { font-size: 14px; margin: 0; }
+  body.scrolled .rail .tagline { max-height: 0; opacity: 0; margin: 0; }
+  body.scrolled .rail .nav { gap: 1px; }
+  body.scrolled .rail .nav a { font-size: 13.5px; padding: 3px 0; }
+  body.scrolled .rail .social { gap: 2px 12px; }
+  body.scrolled .rail .social a { font-size: 10.5px; }
+  body.scrolled .rail .rail-footer { padding-top: 8px; }
+}
+
+/* ------------------------------------------------------------
+   Responsive — narrow screens: the rail becomes a compact
+   letterhead bar, not a stacked mini-site above the fold.
    ------------------------------------------------------------ */
 
 @media (max-width: 1079px) {
   .rail {
-    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: start;
     width: auto;
-    height: auto;
     border-right: 0;
     border-bottom: 1px solid var(--hairline);
-    padding: 24px clamp(18px, 4vw, 40px);
+    padding: 16px clamp(18px, 4vw, 40px) 14px;
+    gap: 6px 22px;
   }
-  .rail-header, .rail-main, .rail-footer {
-    position: relative;
-    background: transparent;
-    padding-bottom: 0;
-    padding-top: 0;
-    border-top: 0;
-    overflow-y: visible;
+  /* Flatten the header/content/footer wrappers so their children
+     flow straight into the rail's flex row. */
+  .rail-header, .rail-content, .rail-footer { display: contents; }
+
+  .rail .sig { width: 46px; }
+  .rail .photo-wrap { display: none; }
+  .rail .tagline { display: none; }
+  .rail .name { margin: 0; font-size: 19px; }
+
+  .nav {
+    order: 5;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 2px 18px;
+    width: 100%;
+    margin-top: 6px;
   }
-  .rail .sig { width: 64px; }
-  .rail .name { margin: 4px 0 0; }
-  .rail .tagline { font-size: 14.5px; }
-  .rail .photo-wrap { width: auto; }
-  .rail .photo { width: 84px; height: 84px; }
-  .rail .photo:hover { width: 98px; height: 98px; }
-  .rail .nav { flex-direction: column; }
-  .rail .social { display: flex; flex-wrap: wrap; gap: 8px 16px; }
-  .rail-main { overflow: visible; }
-  .main { margin-left: 0; max-width: none; }
+  .nav a { font-size: 15.5px; padding: 2px 0; }
+
+  .social { order: 6; width: auto; gap: 6px 16px; }
+  .social a { font-size: 10.5px; }
+
+  .rail-foot { order: 7; width: auto; margin: 0; font-size: 10px; }
+
+  .main { max-width: none; }
 }
 
 @media (max-width: 560px) {
