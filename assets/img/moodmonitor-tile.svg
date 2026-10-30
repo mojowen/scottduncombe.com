@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 250" role="img" aria-label="MoodMonitor tile">
-  <rect width="400" height="250" fill="#fdfafc"/>
-  <rect x="14" y="14" width="372" height="222" rx="10" fill="#ffffff" stroke="#580035" stroke-opacity="0.16"/>
-  <text x="200" y="128" text-anchor="middle" dominant-baseline="central"
-        font-family="Georgia, 'Times New Roman', serif" font-weight="bold" font-size="110" fill="#580035">MM</text>
-  <text x="200" y="207" text-anchor="middle"
-        font-family="ui-monospace, Menlo, monospace" font-size="15" letter-spacing="6" fill="#787878">MOODMONITOR</text>
-</svg>
