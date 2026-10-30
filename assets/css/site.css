@@ -240,15 +240,8 @@ img { max-width: 100%; display: block; }
   margin: 0 0 1.4em;
 }
 
-/* Draft marks — facts awaiting Scott's eyes */
-.todo {
-  background: rgba(200, 16, 46, 0.06);
-  border-bottom: 2px dashed rgba(200, 16, 46, 0.55);
-  cursor: help;
-}
-
 /* ------------------------------------------------------------
-   Spec-sheet project cards
+   Project cards
    ------------------------------------------------------------ */
 
 .grid-cards {
@@ -300,7 +293,6 @@ img { max-width: 100%; display: block; }
   border-radius: 3px;
   box-shadow: 2px 3px 0 rgba(52, 0, 31, 0.28);
 }
-.sticker.tomato { background: var(--tomato); }
 .sticker.stamp  { background: var(--stamp); rotate: 2deg; }
 
 .card-title {
@@ -444,7 +436,6 @@ img { max-width: 100%; display: block; }
   transition: translate 0.25s var(--ease), box-shadow 0.25s var(--ease);
 }
 .gallery img:hover { translate: 0 -3px; box-shadow: var(--shadow); }
-.gallery img.wide { grid-column: 1 / -1; }
 
 .prevnext {
   display: flex;
@@ -457,7 +448,6 @@ img { max-width: 100%; display: block; }
   font-weight: 600;
   font-size: 18px;
 }
-.prevnext .mono { font-weight: 400; }
 
 .field-notes { margin: 30px 0; }
 .field-notes .note {
@@ -631,5 +621,4 @@ img { max-width: 100%; display: block; }
   }
   .sig .split { stroke-dashoffset: 0; }
   .sig .s-ink, .sig .d-ink { opacity: 1; }
-  .rail .photo:hover { width: 132px; height: 132px; }
 }
