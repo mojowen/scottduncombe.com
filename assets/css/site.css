@@ -17,7 +17,6 @@
   --hairline: rgba(88, 0, 53, 0.16);
   --hairline-soft: rgba(88, 0, 53, 0.09);
   --shadow: 0 18px 40px -24px rgba(52, 0, 31, 0.35);
-  --hard-shadow: 8px 8px 0 rgba(88, 0, 53, 0.09);
   --ease: cubic-bezier(0.22, 0.9, 0.32, 1);
   --serif: "Bitter", Georgia, "Times New Roman", serif;
   --sans: -apple-system, "Helvetica Neue", "HelveticaNeue-Light", Helvetica, Arial, sans-serif;
@@ -265,13 +264,10 @@ img { max-width: 100%; display: block; }
   border: 1px solid var(--hairline);
   border-radius: 12px;
   padding: 22px 22px 18px;
-  rotate: var(--tilt, -0.45deg);
   box-shadow: 0 6px 22px -18px rgba(52, 0, 31, 0.4);
-  transition: rotate 0.3s var(--ease), translate 0.3s var(--ease), box-shadow 0.3s var(--ease), border-color 0.3s;
+  transition: translate 0.3s var(--ease), box-shadow 0.3s var(--ease), border-color 0.3s;
 }
-.grid-cards > *:nth-child(even) { --tilt: 0.45deg; }
 .spec-card:hover {
-  rotate: 0deg;
   translate: 0 -5px;
   border-color: rgba(88, 0, 53, 0.34);
   box-shadow: 0 22px 36px -26px rgba(52, 0, 31, 0.55);
@@ -293,7 +289,7 @@ img { max-width: 100%; display: block; }
   position: absolute;
   top: -13px;
   right: 16px;
-  rotate: -4deg;
+  rotate: -2deg;
   font-family: var(--mono);
   font-size: 11px;
   letter-spacing: 0.14em;
@@ -305,7 +301,7 @@ img { max-width: 100%; display: block; }
   box-shadow: 2px 3px 0 rgba(52, 0, 31, 0.28);
 }
 .sticker.tomato { background: var(--tomato); }
-.sticker.stamp  { background: var(--stamp); rotate: 3deg; }
+.sticker.stamp  { background: var(--stamp); rotate: 2deg; }
 
 .card-title {
   font-size: 24px;
@@ -363,17 +359,14 @@ img { max-width: 100%; display: block; }
   margin: 30px 0 0;
 }
 .stat-poster {
-  --tilt: -1.1deg;
   background: var(--paper);
-  border: 3px solid var(--plum);
+  border: 2px solid var(--plum);
   border-radius: 10px;
   padding: 24px 22px 18px;
-  rotate: var(--tilt);
-  box-shadow: var(--hard-shadow);
-  transition: rotate 0.3s var(--ease);
+  box-shadow: 0 10px 26px -18px rgba(52, 0, 31, 0.35);
+  transition: translate 0.3s var(--ease), box-shadow 0.3s var(--ease);
 }
-.stat-poster:nth-child(even) { --tilt: 1.1deg; }
-.stat-poster:hover { rotate: 0deg; }
+.stat-poster:hover { translate: 0 -3px; box-shadow: 0 18px 34px -20px rgba(52, 0, 31, 0.45); }
 
 .stat-poster .num {
   display: block;
@@ -638,6 +631,5 @@ img { max-width: 100%; display: block; }
   }
   .sig .split { stroke-dashoffset: 0; }
   .sig .s-ink, .sig .d-ink { opacity: 1; }
-  .spec-card, .stat-poster { rotate: 0deg; }
   .rail .photo:hover { width: 132px; height: 132px; }
 }
