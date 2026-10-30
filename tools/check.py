@@ -88,7 +88,7 @@ def main():
         parser.feed(src)
 
         for attr, url in parser.urls:
-            if url.startswith(("http:", "https:", "mailto:", "#", "data:", "//")):
+            if url.startswith(("http:", "https:", "mailto:", "tel:", "#", "data:", "//")):
                 continue
             if ".html" in url and not url.startswith("404.html"):
                 failures.append(f"{page}: extensionless-URL rule broken, {attr}={url!r}")
